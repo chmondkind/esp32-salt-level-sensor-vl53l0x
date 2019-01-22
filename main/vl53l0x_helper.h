@@ -1,3 +1,6 @@
+//LICENCE: refer to vl53l0x_helper.c
+
+
 #include "vl53l0x_def.h"
 #include "vl53l0x_platform.h"
 
