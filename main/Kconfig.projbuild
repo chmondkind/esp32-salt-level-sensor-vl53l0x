@@ -55,7 +55,7 @@
 menu "ST VL53l0X"
 
 
-# To be done: Add I2C port select, misc. other Vl53l0x specifics like range etc
+# To be done: Add I2C port select, misc. other Vl53l0x specifics like range, budget etc
 
 
 
