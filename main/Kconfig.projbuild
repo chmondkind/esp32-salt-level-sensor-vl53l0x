@@ -51,7 +51,14 @@
 #
 # endmenu
 #
-menu "Salt level "
+# menu "Salt level "
+menu "ST VL53l0X"
+
+
+# To be done: Add I2C port select, misc. other Vl53l0x specifics like range etc
+
+
+
 
 config SENSOR_READ_INTERVAL
     int "Sensor Read Interval"
