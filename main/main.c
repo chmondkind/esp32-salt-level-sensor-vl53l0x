@@ -165,14 +165,16 @@ static void i2c_master_init()
 static void read_sensor(TimerHandle_t timer_handle)
 {
     uint16_t vals[CONFIG_SENSOR_SAMPLE_COUNT];
-    char json_buffer[64];
+//     char json_buffer[64];
     VL53L0X_Error status;
     VL53L0X_RangingMeasurementData_t measurement_data;
     uint32_t reading = 0;
-    uint8_t percent_full = 0;
+//     uint8_t percent_full = 0;
 
-    for (int i = 0; i < CONFIG_SENSOR_SAMPLE_COUNT; i++)
-    {
+// Maybe we'll keep the CONFIG_SENSOR_SAMPLE_COUNT?    
+    
+//     for (int i = 0; i < CONFIG_SENSOR_SAMPLE_COUNT; i++)
+//     {
         status = take_reading(&vl53l0x_dev, &measurement_data);
         if (status != VL53L0X_ERROR_NONE)
             esp_restart();
