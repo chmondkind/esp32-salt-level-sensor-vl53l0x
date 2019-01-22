@@ -3,31 +3,31 @@
 #include <stdio.h>
 #include <vl53l0x_platform.h>
 #include "vl53l0x_helper.h"
-#include "mqtt.h"
+// #include "mqtt.h"
 
-#include "esp_wifi.h"
+// #include "esp_wifi.h"
 #include "esp_event_loop.h"
 #include "nvs_flash.h"
 #include <driver/i2c.h>
 #include <vl53l0x_def.h>
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/timers.h"
-#include "freertos/event_groups.h"
+// #include "freertos/FreeRTOS.h"
+// #include "freertos/task.h"
+// #include "freertos/timers.h"
+// #include "freertos/event_groups.h"
 #include "sdkconfig.h"
 
-static const char *TAG = "salt-level-sensor-vl53l0x";
-static const int WIFI_CONNECTED_BIT = BIT0;
-static const int MQTT_CONNECTED_BIT = BIT1;
+// static const char *TAG = "salt-level-sensor-vl53l0x";
+// static const int WIFI_CONNECTED_BIT = BIT0;
+// static const int MQTT_CONNECTED_BIT = BIT1;
 
 static VL53L0X_Dev_t vl53l0x_dev;
-static TimerHandle_t sensor_timer_h = NULL;
-static EventGroupHandle_t connection_event_group;
-static mqtt_client *mqtt_client_h = NULL;
+// static TimerHandle_t sensor_timer_h = NULL;
+// static EventGroupHandle_t connection_event_group;
+// static mqtt_client *mqtt_client_h = NULL;
 
-static void read_sensor(TimerHandle_t timer_handle);
-static void mqtt_on_connected(mqtt_client * client, mqtt_event_data_t * event_data)
+// static void read_sensor(TimerHandle_t timer_handle);
+/* static void mqtt_on_connected(mqtt_client * client, mqtt_event_data_t * event_data)
 {
     mqtt_client_h = client;
     xEventGroupSetBits(connection_event_group, MQTT_CONNECTED_BIT);
@@ -146,7 +146,7 @@ static void init_wifi()
     ESP_ERROR_CHECK( esp_wifi_start() );
     ESP_ERROR_CHECK( esp_wifi_connect() );
 }
-
+*/
 static void i2c_master_init()
 {
     i2c_port_t i2c_master_port = I2C_NUM_1;
@@ -182,7 +182,7 @@ static void read_sensor(TimerHandle_t timer_handle)
     }
 
     reading /= CONFIG_SENSOR_SAMPLE_COUNT;
-
+/*
     if (reading <= CONFIG_SENSOR_FULL_LVL_MM)
     {
         percent_full = 100;
@@ -200,6 +200,9 @@ static void read_sensor(TimerHandle_t timer_handle)
 
     ESP_LOGI(TAG, "Measured distance: %i", reading);
     mqtt_publish(mqtt_client_h, CONFIG_MQTT_SALT_LEVEL_TOPIC, json_buffer, msg_size, 0, 1);
+*/
+    return reading;
+
 }
 
 void app_main()
